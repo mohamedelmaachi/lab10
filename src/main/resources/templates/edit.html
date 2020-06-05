@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="O. Kalu">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">
+    <title>eregistrar - </title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar ">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link " href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/students">Students</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/register">Add</a>
+        </li>
+
+    </ul>
+</nav>
+
+<div style="padding-top:1em;" class="container">
+
+
+    <form id="editBookForm" method="post" action="/edit" th:object="${student}">
+        <fieldset>
+            <input type="hidden" name="studentId" th:value="${student.studentId}"/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="studentNumber">student Number</label>
+                        <span th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"
+                              class="alert alert-danger"></span>
+                        <input id="studentNumber" name="studentNumber" type="number" class="form-control"
+                               th:value="${student.studentNumber}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="firstName">first Name</label>
+
+                        <input id="firstName" name="firstName" type="text" class="form-control" th:value="${student.firstName}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="firstName">middle Name</label>
+
+                        <input id="middleName" name="middleName" type="text" class="form-control" th:value="${student.middleName}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="lastName">last Name</label>
+
+                        <input id="lastName" name="lastName" type="text" class="form-control" th:value="${student.lastName}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cgpa">cgpa</label>
+                        <span th:if="${#fields.hasErrors('cgpa')}" th:errors="*{cgpa}"
+                              class="alert alert-danger"></span>
+                        <input id="cgpa" name="cgpa" type="text" class="form-control"
+                               th:value="${student.cgpa}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="enrollmentDate">date Of Enrollment</label>
+                        <span th:if="${#fields.hasErrors('enrollmentDate')}" th:errors="*{enrollmentDate}"
+                              class="alert alert-danger"></span>
+                        <input id="enrollmentDate" name="enrollmentDate" type="date" class="form-control"
+                               th:value="${student.enrollmentDate}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label for="isInternational">International ?</label>
+                        <select class="form-control" id="isInternational"  th:field="*{isInternational}">
+
+                            <option value="YES">YES</option>
+                            <option value="NO">NO</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div style="float:right;">
+                <a href="/students" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                <button id="btnSubmit" type="submit" class="btn btn-outline-success">Update Student</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">O. Jablaoui : : : CS425-SWE</span>
+        <span style="float:right;" class="text-muted">&copy; March 2019</span>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>
